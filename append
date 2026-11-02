@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Array Object Operations</title>
+</head>
+<body>
+   <h2>Append Object to Array</h2>
+    <p id="output"></p>
+    <script>
+        let students = [
+            { name: "Amit", age: 20 },
+            { name: "Rahul", age: 21 }
+        ];
+        let student = { name: "Priya", age: 22 };
+        students.push(student);
+        document.getElementById("output").innerHTML =
+            "Array after adding object:<br>" +
+            JSON.stringify(students) + "<br><br>";
+                document.getElementById("output").innerHTML +=
+            "Is students an array? " + Array.isArray(students) + "<br>" +
+            "Is student an array? " + Array.isArray(student);
+    </script>
+</body>
+</html>
+
