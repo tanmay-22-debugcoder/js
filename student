@@ -1,0 +1,96 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Information Form</title>
+</head>
+<body>
+
+    <h2>Student Information Form</h2>
+
+    <form id="studentForm">
+        Name:
+        <input type="text" id="name"><br><br>
+
+        Address:
+        <textarea id="address"></textarea><br><br>
+
+        City:
+        <input type="text" id="city"><br><br>
+
+        State:
+        <input type="text" id="state"><br><br>
+
+        Gender:
+        <select id="gender">
+            <option value="">Select Gender</option>
+            <option>Male</option>
+            <option>Female</option>
+            <option>Other</option>
+        </select><br><br>
+
+        Mobile Number:
+        <input type="text" id="mobile"><br><br>
+
+        Email ID:
+        <input type="text" id="email"><br><br>
+
+        <p id="message"></p>
+
+        <button type="submit">Submit</button>
+        <button type="reset">Reset</button>
+    </form>
+
+    <div id="welcome" style="display:none;">
+        <h1>Congratulations!</h1>
+        <h2 id="welcomeName"></h2>
+        <p>Your information has been submitted successfully.</p>
+    </div>
+
+    <script>
+        document.getElementById("studentForm").onsubmit =
+        function(event) {
+            event.preventDefault();
+
+            let name = document.getElementById("name").value.trim();
+            let address = document.getElementById("address").value.trim();
+            let city = document.getElementById("city").value.trim();
+            let state = document.getElementById("state").value.trim();
+            let gender = document.getElementById("gender").value;
+            let mobile = document.getElementById("mobile").value.trim();
+            let email = document.getElementById("email").value.trim();
+
+            let message = "";
+
+            if (!name || !address || !city || !state ||
+                !gender || !mobile || !email) {
+                message = "Please fill in all fields.";
+            }
+            else if (!/^[A-Za-z ]{2,}$/.test(name)) {
+                message = "Enter a valid name.";
+            }
+            else if (!/^[6-9][0-9]{9}$/.test(mobile)) {
+                message = "Enter a valid 10-digit mobile number.";
+            }
+            else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                message = "Enter a valid email ID.";
+            }
+
+            if (message !== "") {
+                document.getElementById("message").textContent = message;
+                return;
+            }
+
+            document.getElementById("studentForm").style.display = "none";
+            document.getElementById("welcomeName").textContent =
+                "Welcome, " + name + "!";
+            document.getElementById("welcome").style.display = "block";
+        };
+
+        document.getElementById("studentForm").onreset = function() {
+            document.getElementById("message").textContent = "";
+        };
+    </script>
+
+</body>
+</html>
