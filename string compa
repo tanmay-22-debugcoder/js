@@ -1,0 +1,79 @@
+<html>
+<head>
+    <title>String Comparison</title>
+</head>
+
+<body>
+
+<center>
+
+    <h2>Compare Two Strings</h2>
+
+    <form name="compareForm">
+
+        <label>Enter First String:</label>
+        <input type="text" name="string1">
+
+        <br><br>
+
+        <label>Enter Second String:</label>
+        <input type="text" name="string2">
+
+        <br><br>
+
+        <input type="button" value="Compare Strings"
+               onclick="compareStrings()">
+
+    </form>
+
+    <h3>Comparison Results:</h3>
+
+    <pre id="result"></pre>
+
+</center>
+
+<script>
+
+function compareStrings() {
+
+    // Get strings from the form
+    let str1 = document.compareForm.string1.value;
+    let str2 = document.compareForm.string2.value;
+
+    // Method 1: Strict Equality
+    let result1 = (str1 === str2);
+
+    // Method 2: Loose Equality
+    let result2 = (str1 == str2);
+
+    // Method 3: localeCompare()
+    let result3 = str1.localeCompare(str2);
+
+    // Method 4: Character-by-character comparison
+    let result4 = true;
+
+    if (str1.length != str2.length) {
+        result4 = false;
+    }
+    else {
+        for (let i = 0; i < str1.length; i++) {
+
+            if (str1.charAt(i) != str2.charAt(i)) {
+                result4 = false;
+                break;
+            }
+        }
+    }
+
+    // Display result
+    document.getElementById("result").textContent =
+        "1. Strict Equality (===): " + result1 + "\n" +
+        "2. Loose Equality (==): " + result2 + "\n" +
+        "3. localeCompare(): " + result3 + "\n" +
+        "4. Character-by-Character Comparison: " + result4;
+}
+
+</script>
+
+</body>
+</html>
