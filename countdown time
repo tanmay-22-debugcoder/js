@@ -1,0 +1,32 @@
+<html>
+<head>
+    <title>Countdown Timer</title>
+</head>
+
+<body>
+
+    <h2 id="timer">00</h2>
+
+    <script>
+        let time = parseInt(prompt("Enter time in seconds:"));
+
+        let timer = document.getElementById("timer");
+
+        timer.innerHTML = time;
+
+        let countdown = setInterval(function() {
+
+            time--;
+
+            timer.innerHTML = time;
+
+            if (time <= 0) {
+                clearInterval(countdown);
+                timer.innerHTML = "Time's Up!";
+            }
+
+        }, 1000);
+    </script>
+
+</body>
+</html>
