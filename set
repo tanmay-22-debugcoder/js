@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Set Operations</title>
+</head>
+<body>
+    <h2>JavaScript Set Operations</h2>
+    <p>Set A = {1, 2, 3, 4}</p>
+    <p>Set B = {3, 4, 5, 6}</p>
+
+    <button onclick="union()">Union</button>
+    <button onclick="intersection()">Intersection</button>
+    <button onclick="difference()">Difference (A - B)</button>
+    <button onclick="setDifference()">Set Difference (B - A)</button>
+    <h3>Result:</h3>
+    <p id="result"></p>
+    <script>
+        let A = new Set([1, 2, 3, 4]);
+        let B = new Set([3, 4, 5, 6]);
+
+        // Union: A ∪ B
+        function union() {
+            let result = new Set([...A, ...B]);
+            document.getElementById("result").innerHTML =
+                "Union: " + [...result];
+        }
+
+        // Intersection: A ∩ B
+        function intersection() {
+            let result = new Set([...A].filter(x => B.has(x)));
+            document.getElementById("result").innerHTML =
+                "Intersection: " + [...result];  }
+
+        // Difference: A - B
+        function difference() {
+            let result = new Set([...A].filter(x => !B.has(x)));
+            document.getElementById("result").innerHTML =
+                "Difference (A - B): " + [...result];}
+
+        // Set Difference: B - A
+        function setDifference() {
+            let result = new Set([...B].filter(x => !A.has(x)));
+            document.getElementById("result").innerHTML =
+                "Set Difference (B - A): " + [...result];
+        }
+    </script>
+</body>
+</html>
