@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h2>Calculator</h2>
+<input type="text" id="num1" placeholder="Enter first number">
+<br><br>
+<input type="text" id="num2" placeholder="Enter second number">
+<br><br>
+<button onclick="calc('+')">+</button>
+<button onclick="calc('-')">-</button>
+<button onclick="calc('*')">*</button>
+<button onclick="calc('/')">/</button>
+<button onclick="square()">Square</button>
+<p id="result"></p>
+<script>
+function calc(op) {
+    let a = document.getElementById("num1").value;
+    let b = document.getElementById("num2").value;
+
+    if (a.trim() === "" || b.trim() === "" ||
+        isNaN(a) || isNaN(b)) {
+        alert("Enter valid numbers!");
+        return;
+    }
+    a = Number(a);
+    b = Number(b);
+    if (op === '/' && b === 0) {
+        alert("Cannot divide by zero!");
+        return;  }
+    let r;
+    if (op === '+') r = a + b;
+    else if (op === '-') r = a - b;
+    else if (op === '*') r = a * b;
+    else if (op === '/') r = a / b;
+    document.getElementById("result").innerHTML = "Result: " + r;
+}
+function square() {
+    let a = document.getElementById("num1").value;
+
+    if (a.trim() === "" || isNaN(a)) {
+        alert("Enter a valid number!");
+        return;
+    }
+    document.getElementById("result").innerHTML =
+        "Square: " + (Number(a) * Number(a));
+}
+</script>
+
+</body>
+</html>
