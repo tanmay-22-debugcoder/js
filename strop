@@ -1,0 +1,129 @@
+<html>
+<head>
+    <title>String Operations</title>
+    <style>
+        body{
+            font-family: Arial;
+            margin: 20px;
+        }
+
+        input, button{
+            margin: 5px;
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>1. Reverse String</h2>
+    <input type="text" id="reverseText" placeholder="Enter String">
+    <button onclick="showReverse()">Reverse</button>
+    <p id="reverseResult"></p>
+
+    <hr>
+
+    <h2>2. Check Palindrome</h2>
+    <input type="text" id="palindromeText" placeholder="Enter String">
+    <button onclick="checkPalindrome()">Check</button>
+    <p id="palindromeResult"></p>
+
+    <hr>
+
+    <h2>3. Replace Character</h2>
+    <input type="text" id="replaceText" placeholder="Enter String"><br>
+    <input type="text" id="oldChar" placeholder="Old Character"><br>
+    <input type="text" id="newChar" placeholder="New Character"><br>
+
+    <button onclick="replaceChar()">Replace</button>
+    <p id="replaceResult"></p>
+
+    <hr>
+
+    <h2>4. Replace Character at Index</h2>
+    <input type="text" id="indexText" placeholder="Enter String"><br>
+    <input type="number" id="indexValue" placeholder="Enter Index"><br>
+    <input type="text" id="indexChar" placeholder="New Character" maxlength="1"><br>
+
+    <button onclick="replaceAtIndex()">Replace at Index</button>
+    <p id="indexResult"></p>
+
+<script>
+
+    // Reverse String using Loop
+    function reverseString(str){
+        let rev = "";
+
+        for(let i = str.length - 1; i >= 0; i--){
+            rev = rev + str[i];
+        }
+        return rev;
+    }
+
+    // Palindrome using built-in methods
+    function isPalindrome(str){
+        let reversed = str.split("").reverse().join("");
+
+        if(str === reversed)
+            return true;
+        else
+            return false;
+    }
+
+    // Replace Character using replace()
+    function replaceCharacter(str, oldChar, newChar){
+        return str.replace(oldChar, newChar);
+    }
+
+    // Replace Character at Given Index
+    function replaceCharacterAtIndex(str, index, newChar){
+
+        if(index < 0 || index >= str.length){
+            return "Invalid Index";
+        }
+
+        return str.substring(0, index) + newChar + str.substring(index + 1);
+    }
+
+    // Reverse Button
+    function showReverse(){
+        let str = document.getElementById("reverseText").value;
+
+        document.getElementById("reverseResult").innerHTML =
+            "Reversed String: " + reverseString(str);
+    }
+
+    // Palindrome Button
+    function checkPalindrome(){
+        let str = document.getElementById("palindromeText").value;
+
+        if(isPalindrome(str))
+            document.getElementById("palindromeResult").innerHTML = "Palindrome";
+        else
+            document.getElementById("palindromeResult").innerHTML = "Not a Palindrome";
+    }
+
+    // Replace Character Button
+    function replaceChar(){
+        let str = document.getElementById("replaceText").value;
+        let oldChar = document.getElementById("oldChar").value;
+        let newChar = document.getElementById("newChar").value;
+
+        document.getElementById("replaceResult").innerHTML =
+            "Updated String: " + replaceCharacter(str, oldChar, newChar);
+    }
+
+    // Replace Character at Index Button
+    function replaceAtIndex(){
+
+        let str = document.getElementById("indexText").value;
+        let index = parseInt(document.getElementById("indexValue").value);
+        let newChar = document.getElementById("indexChar").value;
+
+        document.getElementById("indexResult").innerHTML =
+            "Updated String: " + replaceCharacterAtIndex(str, index, newChar);
+    }
+
+</script>
+
+</body>
+</html>
