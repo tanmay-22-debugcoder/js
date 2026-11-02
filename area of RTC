@@ -1,0 +1,49 @@
+Rec
+<html>
+<head>
+<title>First Program</title>
+</head>
+<body>
+<h1>Area of Rectangle</h1>
+<script type="text/javascript"> var l = 10, b = 20, area;
+area = l * b;
+document.write("<br>Length = " + l + "<br>");
+document.write("<br>Breadth = " + b + "<br>");
+document.write("<br>Area is = " + area + "<br>");
+</script>
+</body>
+</html>
+
+tri
+<html>
+<head>
+<title>Experiment_1</title>
+</head>
+<body>
+<h1>Area of Triangle</h1>
+<script type="text/javascript">
+var h = prompt("Enter Height ="); var b = prompt("Enter Base =");
+var area = (1 / 2) * h * b;
+
+document.write("<br>Height = " + h + "<br>"); document.write("<br>Base = " + b + "<br>");
+document.write("<br>Area = " + area + "<br>");
+</script>
+</body>
+</html>
+
+Circle
+<html>
+<head>
+<title>Experiment_1</title>
+<script type="text/javascript"> function circle() {
+var r = prompt("Enter radius ="); var area = r * r * 3.142;
+document.write("<br>Radius of the circle = " + r + "<br>"); document.write("Area of the circle = " + area);
+}
+</script>
+</head>
+<body>
+<h1>Area of Circle</h1>
+<script> circle();
+</script>
+</body>
+</html>
